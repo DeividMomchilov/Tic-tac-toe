@@ -1,5 +1,12 @@
+<<<<<<< Updated upstream
 import { useState } from 'react'
 import './App.css'
+=======
+import { useState, useEffect } from 'react';
+import { calculateWinner } from './utils/calculateWinner';
+import Scoreboard from './components/Scoreboard';
+import Square from './components/Square';
+>>>>>>> Stashed changes
 
 function App() {
   const [count, setCount] = useState(0)

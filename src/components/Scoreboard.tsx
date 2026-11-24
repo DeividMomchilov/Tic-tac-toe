@@ -1,6 +1,6 @@
-import React from 'react';
+import type { Scores } from '../types';
 
-export default function Scoreboard({ scores }) {
+export default function Scoreboard({ scores }: { scores: Scores }) {
   return (
     <div className="scoreboard">
       <div className="score-box x-score">

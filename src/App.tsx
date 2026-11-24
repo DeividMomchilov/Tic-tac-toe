@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { calculateWinner } from './utils/calculateWinner';
 import Scoreboard from './components/Scoreboard';
 import Square from './components/Square';
-import './App.css';
+import type { Cell, Scores } from './types';
 
 export default function App() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [squares, setSquares] = useState<Cell[]>(Array<Cell>(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
-  const [scores, setScores] = useState({ X: 0, O: 0, Draws: 0 });
+  const [scores, setScores] = useState<Scores>({ X: 0, O: 0, Draws: 0 });
 
   const winInfo = calculateWinner(squares);
   const winner = winInfo ? winInfo.player : null;
@@ -31,7 +31,7 @@ export default function App() {
     status = `Next player: ${xIsNext ? 'X' : 'O'}`;
   }
 
-  const handleClick = (i) => {
+  const handleClick = (i: number) => {
     if (squares[i] || winner) return;
     
     const nextSquares = squares.slice();
@@ -59,8 +59,8 @@ export default function App() {
             key={i}
             value={square}
             onClick={() => handleClick(i)}
-            isWinningSquare={winner && winningLine.includes(i)}
-            isDimmed={winner && !winningLine.includes(i)}
+            isWinningSquare={Boolean(winner) && winningLine.includes(i)}
+            isDimmed={Boolean(winner) && !winningLine.includes(i)}
           />
         ))}
       </div>

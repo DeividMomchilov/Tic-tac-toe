@@ -1,6 +1,13 @@
-import React from 'react';
+import type { Cell } from '../types';
 
-export default function Square({ value, onClick, isWinningSquare, isDimmed }) {
+type SquareProps = {
+  value: Cell;
+  onClick: () => void;
+  isWinningSquare: boolean;
+  isDimmed: boolean;
+};
+
+export default function Square({ value, onClick, isWinningSquare, isDimmed }: SquareProps) {
   let squareClass = "square";
   
   if (value === 'X') squareClass += " x-mark";
